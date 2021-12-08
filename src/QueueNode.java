@@ -16,44 +16,63 @@ public class QueueNode<E> {
     }
 
     private node lastNode(node n2){
-        if (n2.getNext()==null){
+        if (n2.getChild()==null){
             return n2;
         }
-        return lastNode(n2.getNext());
+        return lastNode(n2.getChild());
 
     }
-    private node decrement(node n2){
-            n2.setDataType(n2.getNext().getValue());
-            if(n2.getNext()==null){
-                return n2;
-            }
-            return decrement(n2.getNext());
-
-    }
+//    private node decrement(node n2){//root = root.getChild
+//        if(n2.getChild().getChild()==null){
+//            n2.setDataType(n2.getChild().getValue());
+//            n2.setChild(null);
+//            return n2;
+//        }
+//        n2.setDataType(n2.getChild().getValue());
+//        return decrement(n2.getChild());
+//        if(n2.getChild()==null){
+//            n2.getParent().setDataType(n2.getValue());
+//            n2.getParent().setChild(null);
+//            return null;
+//        }
+//        node temp = new node();
+//        temp.setDataType(n2.getChild().getValue());
+//        n2.setDataType(temp.getValue());
+//        return decrement(n2.getChild());
+//    }
 
 
     public void enqueue(E element){
-        if(length == 0){
+        if(length == 0) {
             root.setDataType(element);
             length++;
-        }
-        if (length == 1) {
+        } else if (length == 1) {
             node n=new node(element, null,root);
-            root.setNext(n);
+            root.setChild(n);
+            length++;
+        } else {
+            node n = new node(element);
+            node temp=lastNode(root);
+            lastNode(root).setChild(n);
             length++;
         }
-        if(length>1){
-            node n = new node(element, null, lastNode(root));
-            lastNode(root).setNext(n);
-            length++;
-        }
+
+
     }
 
     public E dequeue(){
-        E temp = (E)root.getValue();
-        decrement(root);
-        lastNode(root).getPrev().setNext(null);
-        return temp;
+        if (length==0){
+            return null;
+        }
+        node temp = root;
+        if (length==1){
+            length--;
+            root.setDataType(null);
+            return (E)temp.getValue();
+        }
+        root=root.getChild();
+        length--;
+        return (E)temp.getValue();
 
     }
 
@@ -62,6 +81,14 @@ public class QueueNode<E> {
         for (int i=0;i<15;i++){
             n.enqueue(i);
         }
+        
+
+
+
+
+
+
+
 
     }
 
