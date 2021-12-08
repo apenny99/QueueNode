@@ -4,45 +4,27 @@
  * Author: August Penny
  * Collaborator(s): The names of anyone you collaborated with here
  * Collaboration: Describe the collaboration that took place
- * Date: Date the program is handed in
+ * Date: Date the program is handed in 12/8/21
  **/
 public class QueueNode<E> {
     private node root=new node();
     private int length;
     
 
-    public QueueNode(){
+    public QueueNode(){//default constructor
         length=0;
     }
 
-    private node lastNode(node n2){
+    private node lastNode(node n2){//private method that returns the last node in the queue
         if (n2.getChild()==null){
             return n2;
         }
         return lastNode(n2.getChild());
 
     }
-//    private node decrement(node n2){//root = root.getChild
-//        if(n2.getChild().getChild()==null){
-//            n2.setDataType(n2.getChild().getValue());
-//            n2.setChild(null);
-//            return n2;
-//        }
-//        n2.setDataType(n2.getChild().getValue());
-//        return decrement(n2.getChild());
-//        if(n2.getChild()==null){
-//            n2.getParent().setDataType(n2.getValue());
-//            n2.getParent().setChild(null);
-//            return null;
-//        }
-//        node temp = new node();
-//        temp.setDataType(n2.getChild().getValue());
-//        n2.setDataType(temp.getValue());
-//        return decrement(n2.getChild());
-//    }
 
 
-    public void enqueue(E element){
+    public void enqueue(E element){//adds a node onto the end of the queue of nodes
         if(length == 0) {
             root.setDataType(element);
             length++;
@@ -60,7 +42,7 @@ public class QueueNode<E> {
 
     }
 
-    public E dequeue(){
+    public E dequeue(){//removes the top node in the queue
         if (length==0){
             return null;
         }
@@ -76,7 +58,7 @@ public class QueueNode<E> {
 
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty(){//retuens true if the queue is empty and false if it is not
         if (length==0){
             return true;
         }
@@ -86,37 +68,15 @@ public class QueueNode<E> {
         return false;
     }
 
-    public int size(){
+    public int size(){//returns the size of the queue
         return length;
     }
 
-    public E peek(){
+    public E peek(){//returns the top value without removing it
         return (E)root.getValue();
     }
 
-    public static void main(String[] args) {
-        QueueNode n = new QueueNode();
-        System.out.println(n.isEmpty());
-        for (int i=0;i<15;i++){
-            n.enqueue(i);
-
-        }
-        System.out.println(n.isEmpty());
-        System.out.println(n.peek());
-        System.out.println(n.peek());
-        n.dequeue();
-        System.out.println(n.peek());
-        System.out.println(n.peek());
-
-
-
-
-
-
-
-
-
-    }
+    
 
    
 
