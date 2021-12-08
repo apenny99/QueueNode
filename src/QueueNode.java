@@ -76,12 +76,24 @@ public class QueueNode<E> {
 
     }
 
+    public boolean isEmpty(){
+        if (length==0){
+            return true;
+        }
+        if (root.getValue()==null){
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         QueueNode n = new QueueNode();
+        System.out.println(n.isEmpty());
         for (int i=0;i<15;i++){
             n.enqueue(i);
         }
-        
+        System.out.println(n.isEmpty());
+
 
 
 
