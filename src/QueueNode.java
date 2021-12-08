@@ -86,13 +86,27 @@ public class QueueNode<E> {
         return false;
     }
 
+    public int size(){
+        return length;
+    }
+
+    public E peek(){
+        return (E)root.getValue();
+    }
+
     public static void main(String[] args) {
         QueueNode n = new QueueNode();
         System.out.println(n.isEmpty());
         for (int i=0;i<15;i++){
             n.enqueue(i);
+
         }
         System.out.println(n.isEmpty());
+        System.out.println(n.peek());
+        System.out.println(n.peek());
+        n.dequeue();
+        System.out.println(n.peek());
+        System.out.println(n.peek());
 
 
 
