@@ -46,15 +46,15 @@ public class QueueNode<E> {
         if (length==0){
             return null;
         }
-        node temp = root;
+        E temp= (E)root.getValue();
         if (length==1){
             length--;
             root.setDataType(null);
-            return (E)temp.getValue();
+            return temp;
         }
         root=root.getChild();
         length--;
-        return (E)temp.getValue();
+        return temp;
 
     }
 
@@ -76,7 +76,7 @@ public class QueueNode<E> {
         return (E)root.getValue();
     }
 
-    
+
 
    
 
